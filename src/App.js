@@ -12,6 +12,12 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import ProfilePage from './components/profile/ProfilePage';
 import EditProfile from './components/profile/EditProfile';
+import JobListings from './components/jobs/JobListings';
+import PostJob from './components/jobs/PostJob';
+import MessagingPage from './components/messages/MessagingPage';
+
+import AdminDashboard from './components/admin/AdminDashboard';
+import AdminRoute from './components/routing/AdminRoute';
 
 
 function App() {
@@ -22,6 +28,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/jobs" element={<JobListings />} />
         {/* <Route path="/dashboard" element={<Dashboard />} /> */}
         <Route path="/dashboard" element=
           {
@@ -46,6 +53,31 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route
+          path="/post-job"
+          element={
+            <PrivateRoute>
+              <PostJob />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/messages"
+          element={
+            <PrivateRoute>
+              <MessagingPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <AdminRoute>
+              <AdminDashboard />
+            </AdminRoute>
+          }
+        />
+
       </Routes>
       <Footer />
     </>

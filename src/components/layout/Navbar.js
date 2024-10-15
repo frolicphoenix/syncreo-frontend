@@ -1,6 +1,15 @@
 // src/components/layout/Navbar.js
-import React from 'react';
-import { AppBar, Toolbar, Typography, Button, IconButton, Container, Menu, MenuItem } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  IconButton,
+  Container,
+  Menu,
+  MenuItem,
+} from '@mui/material';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { AccountCircle } from '@mui/icons-material';
 
@@ -8,6 +17,12 @@ function Navbar() {
   const isAuthenticated = !!localStorage.getItem('token');
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [userRole, setUserRole] = useState(null);
+
+  useEffect(() => {
+    const role = localStorage.getItem('userRole');
+    setUserRole(role);
+  }, []);
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -19,6 +34,7 @@ function Navbar() {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('userRole');
     navigate('/login');
   };
 
@@ -41,12 +57,31 @@ function Navbar() {
             SYNCREO
           </Typography>
           {isAuthenticated ? (
-            <div>
-              <IconButton
-                size="large"
-                onClick={handleMenu}
-                color="inherit"
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              {/* Dashboard Button */}
+              <Button
+                component={RouterLink}
+                to="/dashboard"
+                color="primary"
+                sx={{ marginRight: 2 }}
               >
+                Dashboard
+              </Button>
+
+              {/* Show Admin Link if user is admin */}
+              {userRole === 'admin' && (
+                <Button
+                  component={RouterLink}
+                  to="/admin"
+                  color="primary"
+                  sx={{ marginRight: 2 }}
+                >
+                  Admin Panel
+                </Button>
+              )}
+
+              {/* Account Icon and Menu */}
+              <IconButton size="large" onClick={handleMenu} color="inherit">
                 <AccountCircle />
               </IconButton>
 
@@ -63,8 +98,8 @@ function Navbar() {
                   horizontal: 'right',
                 }}
               >
-                <MenuItem component={RouterLink} to="/dashboard" onClick={handleClose}>
-                  Dashboard
+                <MenuItem component={RouterLink} to="/profile" onClick={handleClose}>
+                  Profile
                 </MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>

@@ -1,5 +1,7 @@
 // src/components/profile/EditProfile.js
 import React, { useState, useEffect } from 'react';
+import { styled } from '@mui/material/styles';
+
 import {
   Container,
   TextField,
@@ -12,6 +14,10 @@ import {
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const Input = styled('input')({
+  display: 'none',
+});
+
 function EditProfile() {
   const [formData, setFormData] = useState({
     profession: '',
@@ -21,6 +27,7 @@ function EditProfile() {
   });
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const [avatarFile, setAvatarFile] = useState(null);
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -38,6 +45,32 @@ function EditProfile() {
     };
     fetchUserProfile();
   }, []);
+
+  const handleAvatarChange = (e) => {
+    setAvatarFile(e.target.files[0]);
+  };
+
+  const uploadAvatar = async () => {
+    if (!avatarFile) return;
+    const formData = new FormData();
+    formData.append('avatar', avatarFile);
+    try {
+      const res = await axios.post(
+        'http://localhost:5000/api/profile/upload-avatar',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
+      // Update user avatar URL
+      setFormData({ ...formData, avatarUrl: res.data.avatarUrl });
+    } catch (err) {
+      console.error(err);
+      setError('Failed to upload avatar.');
+    }
+  };
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -87,6 +120,34 @@ function EditProfile() {
         </Typography>
       )}
       <form onSubmit={onSubmit}>
+        {/* Profile Picture Upload */}
+        <Box sx={{ mt: 2 }}>
+          <Typography variant="h6" sx={{ fontWeight: 700 }}>
+            Profile Picture
+          </Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
+            <label htmlFor="avatar-upload">
+              <Input
+                accept="image/*"
+                id="avatar-upload"
+                type="file"
+                onChange={handleAvatarChange}
+              />
+              <Button variant="contained" component="span">
+                Choose File
+              </Button>
+            </label>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={uploadAvatar}
+              sx={{ ml: 2 }}
+              disabled={!avatarFile}
+            >
+              Upload
+            </Button>
+          </Box>
+        </Box>
         {/* Profession */}
         <TextField
           label="Profession"

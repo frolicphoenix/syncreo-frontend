@@ -1,7 +1,5 @@
-// src/components/auth/Login.js
+// src/components/jobs/PostJob.js
 import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import {
   Container,
   Typography,
@@ -9,47 +7,38 @@ import {
   Button,
   Box,
 } from '@mui/material';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-function Login() {
+function PostJob() {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    title: '',
+    description: '',
+    budget: '',
   });
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const { email, password } = formData;
-
-  const onChange = (e) =>
+  const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
     setError(null);
-
     try {
-      const res = await axios.post('/api/auth/login', { email, password });
-      const token = res.data.token;
-      const userRole = res.data.user.role; // Get user role from response
-
-      // Store token and user role in localStorage
-      localStorage.setItem('token', token);
-      localStorage.setItem('userRole', userRole);
-
-      // Set default headers for axios
-      axios.defaults.headers.common['x-auth-token'] = token;
-
-      navigate('/dashboard');
+      await axios.post('http://localhost:5000/api/jobs', formData);
+      navigate('/jobs');
     } catch (err) {
-      console.error(err.response.data);
-      setError('Invalid credentials');
+      console.error(err);
+      setError('Failed to post the job.');
     }
   };
 
   return (
     <Container maxWidth="sm" sx={{ mt: 4 }}>
       <Typography variant="h4" sx={{ fontWeight: 700, mb: 2 }}>
-        Login
+        Post a New Job
       </Typography>
       {error && (
         <Typography color="error" sx={{ mb: 2 }}>
@@ -57,22 +46,33 @@ function Login() {
         </Typography>
       )}
       <form onSubmit={onSubmit}>
-        {/* Email Field */}
+        {/* Title */}
         <TextField
-          label="Email"
-          name="email"
-          value={email}
+          label="Job Title"
+          name="title"
+          value={formData.title}
           onChange={onChange}
           fullWidth
           required
           margin="normal"
         />
-        {/* Password Field */}
+        {/* Description */}
         <TextField
-          label="Password"
-          name="password"
-          type="password"
-          value={password}
+          label="Job Description"
+          name="description"
+          value={formData.description}
+          onChange={onChange}
+          fullWidth
+          multiline
+          rows={4}
+          required
+          margin="normal"
+        />
+        {/* Budget */}
+        <TextField
+          label="Budget"
+          name="budget"
+          value={formData.budget}
           onChange={onChange}
           fullWidth
           required
@@ -81,7 +81,7 @@ function Login() {
         {/* Submit Button */}
         <Box sx={{ mt: 4 }}>
           <Button type="submit" variant="contained" color="primary">
-            Login
+            Post Job
           </Button>
         </Box>
       </form>
@@ -89,4 +89,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default PostJob;
