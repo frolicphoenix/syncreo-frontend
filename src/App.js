@@ -10,6 +10,9 @@ import Login from './components/auth/Login';
 import Dashboard from './components/Dashboard';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
+import ProfilePage from './components/profile/ProfilePage';
+import EditProfile from './components/profile/EditProfile';
+
 
 function App() {
   return (
@@ -24,6 +27,22 @@ function App() {
           {
             <PrivateRoute>
               <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <ProfilePage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/edit-profile"
+          element={
+            <PrivateRoute>
+              <EditProfile />
             </PrivateRoute>
           }
         />
