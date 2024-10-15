@@ -1,7 +1,14 @@
 // src/components/auth/Login.js
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import {
+  Container,
+  Typography,
+  TextField,
+  Button,
+  Box,
+} from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import setAuthToken from '../../utils/setAuthToken';
 
 function Login() {
@@ -10,6 +17,8 @@ function Login() {
     password: '',
   });
 
+  const navigate = useNavigate();
+
   const { email, password } = formData;
 
   const onChange = (e) =>
@@ -17,54 +26,58 @@ function Login() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    // Implement login logic
     try {
+      // Make a request to the backend API
       const res = await axios.post('http://localhost:5000/api/auth/login', formData);
       const token = res.data.token;
+      // Store the token in localStorage
       localStorage.setItem('token', token);
+      // Set the default Axios authorization header
       setAuthToken(token);
-      console.log(res.data);
-      // Store the token, update auth state, redirect, etc.
+      // Redirect to the dashboard
+      navigate('/dashboard');
     } catch (err) {
       console.error(err.response.data);
-      // Handle errors
+      // Handle errors (e.g., display error messages to the user)
     }
   };
 
   return (
-    <div className="container">
-      <h2>Login</h2>
+    <Container maxWidth="sm" sx={{ mt: 4 }}>
+      <Typography variant="h4" gutterBottom>
+        Login
+      </Typography>
       <form onSubmit={onSubmit}>
         {/* Email */}
-        <div className="form-group">
-          <label>Email</label>
-          <input
-            type="email"
-            className="form-control"
-            name="email"
-            value={email}
-            onChange={onChange}
-            required
-          />
-        </div>
+        <TextField
+          label="Email"
+          name="email"
+          value={email}
+          onChange={onChange}
+          type="email"
+          fullWidth
+          required
+          margin="normal"
+        />
         {/* Password */}
-        <div className="form-group">
-          <label>Password</label>
-          <input
-            type="password"
-            className="form-control"
-            name="password"
-            value={password}
-            onChange={onChange}
-            required
-          />
-        </div>
+        <TextField
+          label="Password"
+          name="password"
+          value={password}
+          onChange={onChange}
+          type="password"
+          fullWidth
+          required
+          margin="normal"
+        />
         {/* Submit Button */}
-        <button type="submit" className="btn btn-primary">
-          Login
-        </button>
+        <Box mt={2}>
+          <Button type="submit" variant="contained" color="primary" fullWidth>
+            Login
+          </Button>
+        </Box>
       </form>
-    </div>
+    </Container>
   );
 }
 

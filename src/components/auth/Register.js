@@ -2,6 +2,18 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+import {
+  Container,
+  Typography,
+  TextField,
+  Button,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Box,
+} from '@mui/material';
+
 import './Register.css';
 
 function Register() {
@@ -31,59 +43,59 @@ function Register() {
   };
 
   return (
-    <div className="register-container">
-      <h2>Register</h2>
+    <Container maxWidth="sm" sx={{ mt: 4 }}>
+      <Typography variant="h4" gutterBottom>
+        Register
+      </Typography>
       <form onSubmit={onSubmit}>
         {/* Name */}
-        <div className="form-group">
-          <label>Name</label>
-          <input
-            type="text"
-            className="form-control"
-            name="name"
-            value={name}
-            onChange={onChange}
-            required
-          />
-        </div>
+        <TextField
+          label="Name"
+          name="name"
+          value={name}
+          onChange={onChange}
+          fullWidth
+          required
+          margin="normal"
+        />
         {/* Email */}
-        <div className="form-group">
-          <label>Email</label>
-          <input
-            type="email"
-            className="form-control"
-            name="email"
-            value={email}
-            onChange={onChange}
-            required
-          />
-        </div>
+        <TextField
+          label="Email"
+          name="email"
+          value={email}
+          onChange={onChange}
+          type="email"
+          fullWidth
+          required
+          margin="normal"
+        />
         {/* Password */}
-        <div className="form-group">
-          <label>Password</label>
-          <input
-            type="password"
-            className="form-control"
-            name="password"
-            value={password}
-            onChange={onChange}
-            required
-          />
-        </div>
+        <TextField
+          label="Password"
+          name="password"
+          value={password}
+          onChange={onChange}
+          type="password"
+          fullWidth
+          required
+          margin="normal"
+        />
         {/* Role */}
-        <div className="form-group">
-          <label>Role</label>
-          <select name="role" className="form-control" value={role} onChange={onChange}>
-            <option value="freelancer">Freelancer</option>
-            <option value="client">Client</option>
-          </select>
-        </div>
+        <FormControl fullWidth margin="normal">
+          <InputLabel>Role</InputLabel>
+          <Select name="role" value={role} onChange={onChange}>
+            <MenuItem value="freelancer">Freelancer</MenuItem>
+            <MenuItem value="client">Client</MenuItem>
+          </Select>
+        </FormControl>
         {/* Submit Button */}
-        <button type="submit" className="btn btn-primary">
-          Register
-        </button>
+        <Box mt={2}>
+          <Button type="submit" variant="contained" color="primary" fullWidth>
+            Register
+          </Button>
+        </Box>
       </form>
-    </div>
+    </Container>
   );
 }
 
