@@ -3,16 +3,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Navbar() {
-  return (
-    <nav style={navbarStyle}>
-      <h1 style={logoStyle}>Freelancing App</h1>
-      <div>
-        <Link to="/" style={linkStyle}>Dashboard</Link>
-        <Link to="/login" style={linkStyle}>Login</Link>
-        <Link to="/register" style={linkStyle}>Register</Link>
-      </div>
-    </nav>
-  );
+    const isClient = localStorage.getItem('role') === 'client';
+
+    return (
+        <nav style={navbarStyle}>
+        <h1 style={logoStyle}>Freelancing App</h1>
+        <div>
+            <Link to="/" style={linkStyle}>Dashboard</Link>
+            {isClient && <Link to="/new-project" style={linkStyle}>Post Project</Link>}
+            <Link to="/login" style={linkStyle}>Login</Link>
+            <Link to="/register" style={linkStyle}>Register</Link>
+        </div>
+        </nav>
+    );
 }
 
 const navbarStyle = {
