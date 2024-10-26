@@ -1,6 +1,7 @@
 // src/pages/NewProject.js
 import React, { useState } from 'react';
 import api from '../services/api';
+import './NewProject.css';
 
 function NewProject() {
   const [formData, setFormData] = useState({
@@ -35,42 +36,44 @@ function NewProject() {
   };
 
   return (
-    <div>
-      <h2>Post a New Project</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Title</label>
-          <input
-            type="text"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Description</label>
-          <textarea
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Budget</label>
-          <input
-            type="number"
-            name="budget"
-            value={formData.budget}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">Post Project</button>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        {success && <p style={{ color: 'green' }}>{success}</p>}
-      </form>
+    <div className="new-project-page">
+      <div className="new-project-card">
+        <h2>Post a New Project</h2>
+        <form onSubmit={handleSubmit} className="new-project-form">
+          <div className="form-group">
+            <label>Title</label>
+            <input
+              type="text"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Description</label>
+            <textarea
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Budget</label>
+            <input
+              type="number"
+              name="budget"
+              value={formData.budget}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button type="submit" className="submit-button">Post Project</button>
+          {error && <p className="error-message">{error}</p>}
+          {success && <p className="success-message">{success}</p>}
+        </form>
+      </div>
     </div>
   );
 }

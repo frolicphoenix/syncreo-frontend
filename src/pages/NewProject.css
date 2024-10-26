@@ -1,0 +1,95 @@
+/* src/pages/NewProject.css */
+:root {
+    --primary-dark: #374785;
+    --accent-gold: #F3C623;
+    --teal-green: #0DAB76;
+    --background-light: #FAFAFA;
+    --text-light: #fff;
+    --error-red: #ff6b6b;
+    --border-color: #ddd;
+  }
+  
+  .new-project-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    height: 100vh;
+    background-color: var(--background-light);
+  }
+  
+  .new-project-card {
+    background-color: var(--text-light);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .new-project-card h2 {
+    font-size: 1.8em;
+    color: var(--primary-dark);
+    margin-bottom: 20px;
+  }
+  
+  .new-project-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-group label {
+    color: var(--primary-dark);
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background-color: #f9f9f9;
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    background-color: #f1f1f1;
+    box-shadow: 0 0 5px var(--teal-green);
+    outline: none;
+  }
+  
+  .submit-button {
+    background-color: var(--accent-gold);
+    color: var(--primary-dark);
+    padding: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .submit-button:hover {
+    background-color: var(--teal-green);
+    color: var(--text-light);
+    transform: scale(1.05);
+  }
+  
+  .error-message {
+    color: var(--error-red);
+    font-size: 0.9em;
+    margin-top: 10px;
+  }
+  
+  .success-message {
+    color: var(--teal-green);
+    font-size: 0.9em;
+    margin-top: 10px;
+  }
+  

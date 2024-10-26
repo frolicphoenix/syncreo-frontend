@@ -1,0 +1,19 @@
+/* src/components/Messages.css */
+.messages-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .messages-section li {
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .messages-section li:last-child {
+    border-bottom: none;
+  }
+  
+  .messages-section strong {
+    color: var(--primary-color);
+  }
+  

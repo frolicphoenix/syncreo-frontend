@@ -1,0 +1,117 @@
+/* src/pages/ProjectDetails.css */
+:root {
+    --primary-dark: #374785;
+    --accent-gold: #F3C623;
+    --teal-green: #0DAB76;
+    --background-light: #FAFAFA;
+    --text-light: #fff;
+    --error-red: #ff6b6b;
+    --border-color: #ddd;
+  }
+  
+  .project-details-page {
+    display: flex;
+    justify-content: center;
+    padding: 100px 20px 40px; /* Adjusted top padding for navbar space */
+  }
+  
+  .project-details-card {
+    background-color: var(--text-light);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 600px;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .project-title {
+    font-size: 2em;
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+  }
+  
+  .project-description {
+    font-size: 1.1em;
+    color: var(--primary-dark);
+    margin: 10px 0;
+  }
+  
+  .project-info {
+    font-size: 0.9em;
+    color: var(--accent-gold);
+    margin: 5px 0;
+  }
+  
+  .error-message,
+  .loading-message {
+    color: var(--error-red);
+    font-size: 1.1em;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .proposal-form {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: var(--background-light);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    color: var(--primary-dark);
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    font-size: 1em;
+  }
+  
+  .submit-button {
+    background-color: var(--accent-gold);
+    color: var(--primary-dark);
+    padding: 10px;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .submit-button:hover {
+    background-color: var(--teal-green);
+    transform: scale(1.05);
+    color: var(--text-light);
+  }
+  
+  .proposals-list {
+    margin-top: 20px;
+  }
+  
+  .proposals-list h3 {
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+  }
+  
+  .proposal-card {
+    background-color: var(--background-light);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  }
+  

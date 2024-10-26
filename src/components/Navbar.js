@@ -17,13 +17,14 @@ function Navbar() {
     <nav className="navbar">
       <h1 className="logo">Syncreo</h1>
       <div className="nav-links">
-        {/* <Link to="/" className="nav-link">Dashboard</Link> */}
+        
         {user ? (
           <>
+            <Link to="/dashboard" className="nav-link">Dashboard</Link>
             <span className="greeting">Hi, {user.name}</span>
             <Link to="/profile" className="nav-link profile-link">
               <img
-                src={user.profilePicture || '/default-profile.png'}
+                src={user.profilePicture || '/prof.png'}
                 alt="Profile"
                 className="profile-pic"
               />
@@ -32,6 +33,7 @@ function Navbar() {
           </>
         ) : (
           <>
+            <Link to="/" className="nav-link">Home</Link>
             <Link to="/login" className="nav-link">Login</Link>
             <Link to="/register" className="nav-link">Register</Link>
           </>

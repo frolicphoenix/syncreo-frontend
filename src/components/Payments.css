@@ -1,0 +1,44 @@
+/* src/components/Payments.css */
+.payments-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .payments-section li {
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    background-color: var(--background-light);
+  }
+  
+  .payments-section li p {
+    margin: 5px 0;
+  }
+  
+  .payments-section strong {
+    color: var(--primary-color);
+  }
+  
+  .payment-status {
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  .payment-status.completed {
+    color: #fff;
+    background-color: var(--primary-color);
+  }
+  
+  .payment-status.pending {
+    color: #fff;
+    background-color: var(--accent-color);
+  }
+  
+  .payment-status.failed {
+    color: #fff;
+    background-color: var(--error-red);
+  }
+  

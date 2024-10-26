@@ -1,0 +1,45 @@
+/* src/components/ProfileEdit.css */
+.profile-edit-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .profile-edit-section label {
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+  
+  .profile-edit-section input,
+  .profile-edit-section textarea {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1em;
+  }
+  
+  .profile-edit-section textarea {
+    resize: vertical;
+  }
+  
+  .profile-edit-section button {
+    padding: 10px;
+    background-color: var(--accent-color);
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .profile-edit-section button:hover {
+    background-color: var(--primary-color);
+  }
+  
+  .success-message {
+    color: green;
+    font-size: 0.9em;
+  }
+  
