@@ -1,6 +1,7 @@
 // src/pages/Login.js
 import React, { useState } from 'react';
 import api from '../services/api';
+import './Login.css';
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -19,44 +20,51 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-
+  
     try {
       const response = await api.post('/auth/login', formData);
-      const token = response.data.token;
-      localStorage.setItem('token', token); // Store token in local storage
-      window.location.href = '/'; // Redirect to dashboard
+      const { token, user } = response.data;
+  
+      // Save user token and user data to localStorage
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
+  
+      // Redirect to profile page
+      window.location.href = '/profile';
     } catch (err) {
       setError('Login failed. Please check your credentials.');
     }
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">Login</button>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-      </form>
+    <div className="login-page">
+      <div className="login-container">
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button type="submit" className="login-button">Login</button>
+          {error && <p className="error-message">{error}</p>}
+        </form>
+      </div>
     </div>
   );
 }

@@ -1,38 +1,44 @@
 // src/components/Navbar.js
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import './Navbar.css';
 
 function Navbar() {
-    const isClient = localStorage.getItem('role') === 'client';
+  const user = JSON.parse(localStorage.getItem('user'));
+  const navigate = useNavigate();
 
-    return (
-        <nav style={navbarStyle}>
-        <h1 style={logoStyle}>Freelancing App</h1>
-        <div>
-            <Link to="/" style={linkStyle}>Dashboard</Link>
-            {isClient && <Link to="/new-project" style={linkStyle}>Post Project</Link>}
-            <Link to="/login" style={linkStyle}>Login</Link>
-            <Link to="/register" style={linkStyle}>Register</Link>
-        </div>
-        </nav>
-    );
+  const handleLogout = () => {
+    localStorage.removeItem('token'); // Remove token
+    localStorage.removeItem('user'); // Remove user data
+    navigate('/login'); // Redirect to login page
+  };
+
+  return (
+    <nav className="navbar">
+      <h1 className="logo">Syncreo</h1>
+      <div className="nav-links">
+        {/* <Link to="/" className="nav-link">Dashboard</Link> */}
+        {user ? (
+          <>
+            <span className="greeting">Hi, {user.name}</span>
+            <Link to="/profile" className="nav-link profile-link">
+              <img
+                src={user.profilePicture || '/default-profile.png'}
+                alt="Profile"
+                className="profile-pic"
+              />
+            </Link>
+            <button onClick={handleLogout} className="logout-button">Logout</button>
+          </>
+        ) : (
+          <>
+            <Link to="/login" className="nav-link">Login</Link>
+            <Link to="/register" className="nav-link">Register</Link>
+          </>
+        )}
+      </div>
+    </nav>
+  );
 }
-
-const navbarStyle = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  padding: '1rem',
-  backgroundColor: '#4CAF50',
-};
-
-const logoStyle = {
-  color: '#fff',
-};
-
-const linkStyle = {
-  marginLeft: '1rem',
-  color: '#fff',
-  textDecoration: 'none',
-};
 
 export default Navbar;

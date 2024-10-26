@@ -1,0 +1,247 @@
+/* src/pages/LandingPage.css */
+:root {
+  --primary-dark: #374785;    /* Deep Blue Gray */
+  --accent-gold: #F3C623;     /* Soft Gold */
+  --teal-green: #0DAB76;      /* Teal Green */
+  --background-light: #FAFAFA; /* Light Gray */
+  --dark-navy: #1E2022;       /* Dark Navy */
+  --text-light: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--dark-navy);
+}
+
+.landing-page {
+  background-color: var(--background-light);
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--dark-navy);
+  color: var(--text-light);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: var(--accent-gold);
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--accent-gold);
+}
+
+.signup-link {
+  padding: 8px 16px;
+  background-color: var(--accent-gold);
+  color: var(--dark-navy);
+  border-radius: 5px;
+}
+
+/* Hero Section */
+.hero {
+  background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuq3joaHJkCS8gftpCUUR3Yg63O6kFWSO7fg&s') center/cover no-repeat, var(--primary-dark);
+  color: var(--text-light);
+  text-align: center;
+  padding: 180px 20px;
+}
+
+.hero h1 {
+  font-size: 2.8em;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.3em;
+  margin-bottom: 30px;
+}
+
+.cta-button {
+  background-color: var(--accent-gold);
+  color: var(--dark-navy);
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.3s ease, background-color 0.3s;
+}
+
+.cta-button:hover {
+  transform: scale(1.05);
+  background-color: var(--teal-green);
+  color: var(--text-light);
+}
+
+/* Features Section */
+.features {
+  padding: 70px 20px;
+  background-color: var(--background-light);
+  text-align: center;
+}
+
+.features h2 {
+  font-size: 2.2em;
+  margin-bottom: 20px;
+}
+
+.feature-grid {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.feature-item {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s;
+}
+
+.feature-item:hover {
+  transform: scale(1.05);
+}
+
+/* How It Works */
+.how-it-works {
+  padding: 80px 20px;
+  background-color: var(--primary-dark);
+  color: var(--text-light);
+  text-align: center;
+}
+
+.how-it-works h2 {
+  font-size: 2.2em;
+  margin-bottom: 20px;
+}
+
+.steps {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.step {
+  background: var(--text-light);
+  border-radius: 10px;
+  padding: 20px;
+  width: 200px;
+  color: var(--dark-navy);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s;
+}
+
+.step:hover {
+  transform: scale(1.05);
+  background-color: var(--teal-green);
+  color: var(--text-light);
+}
+
+.step-icon {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--accent-gold);
+  background-color: var(--primary-dark);
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+}
+
+/* Testimonials */
+.testimonials {
+  padding: 70px 20px;
+  background: var(--background-light);
+  text-align: center;
+}
+
+.testimonials h2 {
+  font-size: 2.2em;
+  margin-bottom: 20px;
+}
+
+.testimonial-carousel {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 20px 0;
+}
+
+.testimonial {
+  min-width: 220px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  color: var(--primary-dark);
+  transition: transform 0.3s;
+}
+
+.testimonial:hover {
+  transform: scale(1.05);
+}
+
+/* Final CTA */
+.final-cta {
+  background-color: var(--dark-navy);
+  color: var(--text-light);
+  text-align: center;
+  padding: 70px 20px;
+}
+
+.final-cta h2 {
+  font-size: 2.2em;
+  margin-bottom: 20px;
+}
+
+.final-cta .cta-button {
+  background-color: var(--accent-gold);
+  color: var(--dark-navy);
+  padding: 12px 30px;
+  font-size: 1.1em;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.final-cta .cta-button:hover {
+  background-color: var(--teal-green);
+  transform: scale(1.05);
+  color: var(--text-light);
+}
