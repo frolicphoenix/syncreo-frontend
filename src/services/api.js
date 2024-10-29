@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: process.env.REACT_APP_API_BASE_URL || 'https://syncreo-backend-16cdca97e410.herokuapp.com/',
 });
 
 // Routes for projects and freelancers
