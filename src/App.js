@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 
 import AdminLogin from './pages/admin/AdminLogin';
 import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminDetailView from './pages/admin/AdminDetailView';
 import ViewUser from './pages/admin/ViewUser';
 import ViewProject from './pages/admin/ViewProject';
 
@@ -27,10 +28,8 @@ function App() {
           <Route path="/admin/login" element={<AdminLogin />} />
 
           {/* Protected admin route - redirects to /admin/login if no token */}
-          <Route
-            path="/admin/dashboard"
-            element={adminToken ? <AdminDashboard /> : <Navigate to="/admin/login" />}
-          />
+          <Route path="/admin/dashboard" element={adminToken ? <AdminDashboard /> : <Navigate to="/admin/login" />} />
+          <Route path="/admin/details/:type/:id" element={adminToken ? <AdminDetailView /> : <Navigate to="/admin/login" />} />
 
           {/* Other public routes or redirect for unknown paths */}
           <Route path="*" element={<Navigate to="/admin/login" />} />
