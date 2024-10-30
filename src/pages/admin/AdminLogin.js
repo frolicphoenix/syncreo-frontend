@@ -12,23 +12,26 @@ function AdminLogin() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent page reload
     setError('');
-    console.log("Admin login button clicked"); // Debugging
+    console.log("Admin login button clicked");
 
     try {
       const response = await api.post('/admin/auth/login', formData);
-      console.log("Admin login response:", response.data); // Debugging
+      console.log("Admin login response:", response.data);
+
       const { token, user } = response.data;
 
-      if (user.role === 'admin') {
-        localStorage.setItem('adminToken', token); // Store admin token
+      if (user?.role === 'admin') {
+        localStorage.setItem('adminToken', token);
+        console.log("Admin login successful, redirecting...");
         window.location.href = '/admin/dashboard';
       } else {
+        console.log("Access denied for non-admin");
         setError('Access denied.');
       }
     } catch (err) {
-      console.error("Admin login error:", err); // Debugging
+      console.error("Admin login error:", err);
       setError('Admin login failed. Please check your credentials.');
     }
   };
