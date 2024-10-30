@@ -1,46 +1,45 @@
 /* src/pages/ClientProfile.css */
 .client-profile {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .client-profile h2 {
-    font-size: 1.8em;
-    color: #333;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .error-message {
-    color: #f44336;
-    font-size: 1em;
-    margin-top: 10px;
-  }
-  
-  .project-list {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .project-item {
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    background-color: #fff;
-  }
-  
-  .project-item h3 {
-    color: #333;
-    margin-bottom: 5px;
-  }
-  
-  .project-item p {
-    color: #555;
-    margin: 5px 0;
-  }
-  
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.client-profile h2 {
+  font-size: 1.8em;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.error-message {
+  color: #f44336;
+  font-size: 1em;
+  margin-top: 10px;
+}
+
+.project-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.project-item {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  background-color: #fff;
+}
+
+.project-item h3 {
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.project-item p {
+  color: #555;
+  margin: 5px 0;
+}

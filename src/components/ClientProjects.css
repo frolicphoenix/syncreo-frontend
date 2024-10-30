@@ -1,0 +1,41 @@
+/* src/components/ClientProjects.css */
+
+.client-projects {
+    padding: 20px;
+  }
+  
+  .client-projects h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+  
+  .project-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .project-item {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+  }
+  
+  .project-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .project-description {
+    color: #555;
+    margin: 10px 0;
+  }
+  
+  .project-budget {
+    font-weight: bold;
+    color: #333;
+  }
+  

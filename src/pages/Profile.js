@@ -5,6 +5,8 @@ import Proposals from '../components/Proposals';
 import Timeline from '../components/Timeline';
 import Payments from '../components/Payments';
 import ProfileEdit from '../components/ProfileEdit';
+import ClientProjects from '../components/ClientProjects';
+
 import './Profile.css';
 
 function Profile() {
@@ -23,6 +25,8 @@ function Profile() {
         return <Payments userId={user._id} />;
       case 'profileEdit':
         return <ProfileEdit user={user} />;
+      case 'myProjects': 
+        return <ClientProjects userId={user._id} />;
       default:
         return <Messages userId={user._id} />;
     }
@@ -38,6 +42,9 @@ function Profile() {
           <li onClick={() => setActiveTab('timeline')} className={activeTab === 'timeline' ? 'active' : ''}>Timeline</li>
           <li onClick={() => setActiveTab('payments')} className={activeTab === 'payments' ? 'active' : ''}>Payments</li>
           <li onClick={() => setActiveTab('profileEdit')} className={activeTab === 'profileEdit' ? 'active' : ''}>Profile Edit</li>
+          {user?.role === 'client' && (
+            <li onClick={() => setActiveTab('myProjects')} className={activeTab === 'myProjects' ? 'active' : ''}>My Projects</li>
+          )}
         </ul>
       </aside>
       <main className="profile-content">
