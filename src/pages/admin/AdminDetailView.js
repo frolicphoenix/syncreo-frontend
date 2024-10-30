@@ -1,5 +1,5 @@
 // src/pages/admin/AdminDetailView.js
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import api from '../../services/api';
 import './AdminDetailView.css';
@@ -9,11 +9,7 @@ function AdminDetailView() {
   const [data, setData] = useState(null);
   const [formData, setFormData] = useState({ name: '', email: '', role: '', title: '', description: '', budget: '' });
 
-  useEffect(() => {
-    fetchData();
-  }, [type, id]);
-
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const endpoint = type === 'user' ? `/admin/users/${id}` : `/admin/projects/${id}`;
       const response = await api.get(endpoint, {
@@ -28,7 +24,11 @@ function AdminDetailView() {
     } catch (error) {
       console.error('Error fetching data:', error);
     }
-  };
+  }, [type, id]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
