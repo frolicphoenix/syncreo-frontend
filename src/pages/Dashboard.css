@@ -2,8 +2,10 @@
 
 .dashboard-page {
   padding: 20px;
+  margin-top: 80px;
   max-width: 1200px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .dashboard-title {
@@ -23,8 +25,9 @@
   display: inline-block;
   padding: 10px 20px;
   font-size: 1em;
-  background-color: #4caf50;
+  font-weight: bold;
   color: #fff;
+  background-color: #4CAF50;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -37,20 +40,14 @@
 
 .error-message {
   color: #f44336;
-  text-align: center;
-  margin-top: 20px;
-}
-
-.no-data {
-  text-align: center;
-  color: #888;
-  font-size: 1.1em;
+  font-size: 0.9em;
+  margin-top: 10px;
 }
 
 .card-grid {
   display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   margin-top: 20px;
 }
 
@@ -59,28 +56,22 @@
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
-}
-
-.card:hover {
-  transform: scale(1.05);
 }
 
 .card-title {
-  font-size: 1.3em;
+  font-size: 1.2em;
+  font-weight: bold;
   color: #333;
   text-decoration: none;
-  font-weight: bold;
-  display: block;
   margin-bottom: 10px;
 }
 
 .card-description {
-  color: #555;
-  margin-bottom: 10px;
+  color: #666;
+  margin-bottom: 15px;
 }
 
 .card-info {
-  color: #777;
-  font-size: 0.9em;
+  color: #333;
+  font-weight: bold;
 }

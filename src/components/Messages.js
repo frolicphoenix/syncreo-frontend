@@ -9,25 +9,28 @@ function Messages({ userId }) {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const response = await api.get(`/messages/${userId}`);
+        const response = await api.get(`/messages/user/${userId}`);
         setMessages(response.data);
       } catch (error) {
         console.error('Error fetching messages:', error);
       }
     };
+
     fetchMessages();
   }, [userId]);
 
   return (
-    <div className="messages-section">
+    <div className="messages-container">
       <h3>Messages</h3>
-      <ul>
-        {messages.map((message) => (
-          <li key={message._id}>
-            <strong>{message.sender.name}</strong>: {message.content}
-          </li>
+      <div className="message-list">
+        {messages.map((msg, index) => (
+          <div key={index} className={`message ${msg.sender === userId ? 'sent' : 'received'}`}>
+            <div className="message-sender">{msg.senderName}</div>
+            <div className="message-text">{msg.text}</div>
+            <div className="message-timestamp">{new Date(msg.timestamp).toLocaleString()}</div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

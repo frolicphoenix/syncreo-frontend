@@ -1,22 +1,28 @@
 /* src/components/Proposals.css */
-.proposals-section ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .proposals-section li {
-    padding: 15px;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  }
-  
-  .proposals-section li p {
-    margin: 5px 0;
-  }
-  
-  .proposals-section strong {
-    color: var(--primary-color);
-  }
-  
+
+.proposals-container {
+  padding: 20px;
+}
+
+.proposals-container h3 {
+  font-size: 1.5em;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.proposal-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.proposal-item {
+  background-color: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.proposal-item p {
+  margin: 5px 0;
+}

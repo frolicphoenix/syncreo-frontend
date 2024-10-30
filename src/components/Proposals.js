@@ -9,28 +9,32 @@ function Proposals({ userId, role }) {
   useEffect(() => {
     const fetchProposals = async () => {
       try {
-        const endpoint = role === 'freelancer' ? `/proposals/user/${userId}` : `/proposals/received/${userId}`;
-        const response = await api.get(endpoint);
+        const response = await api.get(`/proposals/user/${userId}`);
         setProposals(response.data);
       } catch (error) {
         console.error('Error fetching proposals:', error);
       }
     };
+
     fetchProposals();
-  }, [userId, role]);
+  }, [userId]);
 
   return (
-    <div className="proposals-section">
+    <div className="proposals-container">
       <h3>Proposals</h3>
-      <ul>
-        {proposals.map((proposal) => (
-          <li key={proposal._id}>
-            <strong>Project:</strong> {proposal.project.title}
-            <p>Budget: ${proposal.budget}</p>
-            <p>Cover Letter: {proposal.coverLetter}</p>
-          </li>
-        ))}
-      </ul>
+      {proposals.length > 0 ? (
+        <ul className="proposal-list">
+          {proposals.map((proposal, index) => (
+            <li key={index} className="proposal-item">
+              <p><strong>Project:</strong> {proposal.projectTitle}</p>
+              <p><strong>Status:</strong> {proposal.status}</p>
+              <p><strong>Submitted on:</strong> {new Date(proposal.date).toLocaleString()}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No proposals submitted yet.</p>
+      )}
     </div>
   );
 }

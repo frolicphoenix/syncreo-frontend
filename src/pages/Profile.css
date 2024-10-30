@@ -1,69 +1,47 @@
 /* src/pages/Profile.css */
-:root {
-  --navbar-height: 80px; /* Adjust this based on your navbar's actual height */
-  --primary-color: #374785;
-  --accent-color: #F3C623;
-  --background-light: #f8f8f8;
-  --text-color: #333;
-  --border-color: #ddd;
-  --hover-bg: #e0e0e0;
-}
 
 .profile-page {
   display: flex;
-  min-height: 100vh;
-  padding-top: var(--navbar-height); /* Ensure content is below the navbar */
+  margin-top: 80px; /* Prevent overlap with navbar */
+  padding: 20px;
 }
 
 .profile-sidebar {
-  width: 20%;
-  background-color: var(--background-light);
+  width: 200px;
   padding: 20px;
-  border-right: 1px solid var(--border-color);
+  background-color: #f5f5f5;
+  border-right: 1px solid #ddd;
 }
+
 .profile-sidebar h2 {
-  font-size: 1.6em;
-  color: var(--primary-color);
-  margin-bottom: 20px;
+  font-size: 1.5em;
+  color: #333;
+  margin-bottom: 15px;
 }
 
 .profile-sidebar ul {
-  list-style: none;
+  list-style-type: none;
   padding: 0;
 }
 
 .profile-sidebar li {
-  padding: 10px 15px;
+  padding: 10px;
+  margin-bottom: 10px;
   cursor: pointer;
-  color: var(--text-color);
-  font-size: 1em;
-  transition: background-color 0.3s;
   border-radius: 5px;
+  transition: background-color 0.2s;
 }
 
 .profile-sidebar li:hover,
-.profile-sidebar .active {
-  background-color: var(--hover-bg);
-  color: var(--primary-color);
-  font-weight: bold;
+.profile-sidebar li.active {
+  background-color: #4caf50;
+  color: #fff;
 }
 
 .profile-content {
-  width: 80%;
-  padding: 30px;
-  background-color: #fff;
-}
-
-.profile-content h3 {
-  color: var(--primary-color);
-  margin-bottom: 20px;
-  font-size: 1.4em;
-}
-
-.section-content {
-  background-color: var(--background-light);
+  flex-grow: 1;
   padding: 20px;
+  background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
 }
