@@ -12,6 +12,8 @@ import Footer from './components/Footer';
 
 import AdminLogin from './pages/admin/AdminLogin';
 import AdminDashboard from './pages/admin/AdminDashboard';
+import ViewUser from './pages/admin/ViewUser';
+import ViewProject from './pages/admin/ViewProject';
 
 function App() {
   // const user = JSON.parse(localStorage.getItem('user'));
@@ -32,6 +34,9 @@ function App() {
 
           {/* Other public routes or redirect for unknown paths */}
           <Route path="*" element={<Navigate to="/admin/login" />} />
+          <Route path="/admin/users/:id" element={<ViewUser />} />
+          <Route path="/admin/projects/:id" element={<ViewProject />} />
+          
           <Route path="/" element={<LandingPage />} />
           <Route path="/register" element={<Register />} />
 
