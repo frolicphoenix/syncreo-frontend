@@ -4,24 +4,26 @@ import api from '../services/api';
 import { Link } from 'react-router-dom';
 import './ClientProjects.css';
 
-function ClientProjects({ userId }) {
+function ClientProjects() {
   const [projects, setProjects] = useState([]);
   const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchClientProjects = async () => {
       try {
-        const response = await api.get(`/projects/client/${userId}`, {
+        // Updated endpoint to match backend
+        const response = await api.get('/projects/client-projects', {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         });
         setProjects(response.data);
       } catch (err) {
+        console.error('Error fetching client projects:', err);
         setError('Failed to fetch your projects. Please try again later.');
       }
     };
 
     fetchClientProjects();
-  }, [userId]);
+  }, []);
 
   return (
     <div className="client-projects">
