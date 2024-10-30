@@ -10,6 +10,7 @@ import Profile from './pages/Profile';
 import LandingPage from './pages/LandingPage';
 import Footer from './components/Footer';
 
+import AdminRegister from './pages/AdminRegister';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminUsers from './pages/AdminUsers';
@@ -24,6 +25,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/register" element={<AdminRegister />} />
+          
           {user?.role === 'admin' ? (
             <>
               <Route path="/admin" element={<AdminDashboard />} />
