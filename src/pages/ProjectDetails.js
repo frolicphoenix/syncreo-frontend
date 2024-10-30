@@ -74,9 +74,6 @@ function ProjectDetails() {
           <p className="project-info">Budget: ${project.budget}</p>
           <p className="project-info">Posted by: {project.client.name}</p>
 
-          {/* Messaging Component */}
-          <MessageList projectId={id} />
-
           {/* Freelancer View: Proposal Submission Form */}
           {isFreelancer && (
             <div className="proposal-form">
@@ -123,6 +120,9 @@ function ProjectDetails() {
           ) : isClient && project?.client?._id === user?._id && (
             <p className="no-proposals">No proposals submitted yet.</p>
           )}
+
+          {/* Messaging Component */}
+          <MessageList projectId={id} />
 
         </div>
       ) : (

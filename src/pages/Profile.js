@@ -12,10 +12,11 @@ function Profile() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // Fetch user data from localStorage on component mount
+    // Fetch user data from localStorage
     const storedUser = JSON.parse(localStorage.getItem('user'));
     if (storedUser) {
       setUser(storedUser);
+      console.log("Profile Page - User ID:", storedUser._id); // Log User ID
     } else {
       console.error("User data not found in localStorage.");
     }
@@ -23,7 +24,7 @@ function Profile() {
 
   const renderTabContent = () => {
     if (!user || !user._id) {
-      return <p>Loading user data...</p>; // Display loading message if user data isn't available
+      return <p>Loading user data...</p>; // Show loading if user data isn't available
     }
 
     switch (activeTab) {

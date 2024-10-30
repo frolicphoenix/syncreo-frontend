@@ -28,6 +28,10 @@ function Login() {
       // Save user token and user data to localStorage
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));
+      
+      // Debug logs to confirm user data is stored correctly
+      console.log('Login successful. User:', user);
+      console.log('User ID:', user._id);
   
       // Redirect to profile page
       window.location.href = '/profile';
@@ -35,6 +39,7 @@ function Login() {
       setError('Login failed. Please check your credentials.');
     }
   };
+  
 
   return (
     <div className="login-page">
