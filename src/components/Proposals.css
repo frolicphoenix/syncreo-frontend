@@ -1,22 +1,41 @@
 /* src/components/Proposals.css */
-.proposals-section ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .proposals-section li {
-    padding: 15px;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  }
-  
-  .proposals-section li p {
-    margin: 5px 0;
-  }
-  
-  .proposals-section strong {
-    color: var(--primary-color);
-  }
-  
+
+.proposals-page {
+  padding: 20px;
+}
+
+.proposals-page h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+.proposal-list {
+  list-style: none;
+  padding: 0;
+}
+
+.proposal-item {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+.proposal-item p {
+  margin: 8px 0;
+}
+
+.project-title, .proposal-item strong {
+  font-weight: bold;
+  color: #333;
+}
+
+.freelancer-info {
+  margin: 10px 0;
+  color: #555;
+}
+
+.project-budget {
+  color: #333;
+}
