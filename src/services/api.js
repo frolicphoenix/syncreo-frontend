@@ -7,5 +7,8 @@ const api = axios.create({
 // Routes for projects and freelancers
 export const fetchProjects = () => api.get('/projects');
 export const fetchFreelancers = () => api.get('/freelancers');
+export const fetchClientProposals = () => api.get('/proposals/client', {
+  headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+});
 
 export default api;

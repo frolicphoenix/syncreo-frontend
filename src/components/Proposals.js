@@ -1,6 +1,6 @@
 // src/components/Proposals.js
 import React, { useEffect, useState } from 'react';
-import api from '../services/api';
+import { fetchClientProposals } from '../services/api';  // Updated import
 import './Proposals.css';
 
 function Proposals({ userId, role }) {
@@ -10,11 +10,8 @@ function Proposals({ userId, role }) {
   useEffect(() => {
     const fetchProposals = async () => {
       try {
-        // Check if user is a client to fetch proposals
         if (role === 'client') {
-          const response = await api.get('/proposals/client', {
-            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-          });
+          const response = await fetchClientProposals();
           setProposals(response.data);
         }
       } catch (err) {
