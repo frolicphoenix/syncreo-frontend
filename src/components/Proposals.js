@@ -1,6 +1,6 @@
 // src/components/Proposals.js
 import React, { useEffect, useState } from 'react';
-import { fetchClientProposals, fetchFreelancerProposals } from '../services/api'; // Import the new API function
+import { fetchClientProposals, fetchFreelancerProposals } from '../services/api';
 import './Proposals.css';
 
 function Proposals({ userId, role }) {
@@ -10,23 +10,24 @@ function Proposals({ userId, role }) {
   useEffect(() => {
     const fetchProposals = async () => {
       try {
+        let response; // Define response variable here
+
         if (role === 'client') {
-          const response = await fetchClientProposals();
-          setProposals(response.data);
+          response = await fetchClientProposals();
         } else if (role === 'freelancer') {
-          const response = await fetchFreelancerProposals();
-          setProposals(response.data);
+          response = await fetchFreelancerProposals();
         }
-        console.log('Proposals fetched:', response); // Log response
+
+        setProposals(response.data);
+        console.log('Proposals fetched:', response.data); // Log fetched proposals
       } catch (err) {
         console.error('Error fetching proposals:', err); // Log detailed error
         setError('Failed to fetch proposals. Please try again later.');
       }
     };
-  
+
     fetchProposals();
   }, [role]);
-  
 
   return (
     <div className="proposals-page">
@@ -36,17 +37,17 @@ function Proposals({ userId, role }) {
         <ul className="proposal-list">
           {proposals.map((proposal) => (
             <li key={proposal._id} className="proposal-item">
-              {role === 'client' ? (
+              <p><strong>Project:</strong> {proposal.project.title}</p>
+              {role === 'freelancer' && (
                 <>
-                  <p><strong>Project:</strong> {proposal.project.title}</p>
-                  <p><strong>Freelancer:</strong> {proposal.freelancer.name}</p>
-                  <p><strong>Email:</strong> {proposal.freelancer.email}</p>
-                </>
-              ) : (
-                <>
-                  <p><strong>Project:</strong> {proposal.project.title}</p>
                   <p><strong>Budget:</strong> ${proposal.budget}</p>
                   <p><strong>Cover Letter:</strong> {proposal.coverLetter}</p>
+                </>
+              )}
+              {role === 'client' && (
+                <>
+                  <p><strong>Freelancer:</strong> {proposal.freelancer.name}</p>
+                  <p><strong>Email:</strong> {proposal.freelancer.email}</p>
                 </>
               )}
             </li>
