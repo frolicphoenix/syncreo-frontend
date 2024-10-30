@@ -1,5 +1,5 @@
 // src/pages/Profile.js
-import React, { useState } from 'react'; // Import useState from React
+import React, { useState, useEffect } from 'react';
 import Messages from '../components/Messages';
 import Proposals from '../components/Proposals';
 import Timeline from '../components/Timeline';
@@ -9,9 +9,23 @@ import './Profile.css';
 
 function Profile() {
   const [activeTab, setActiveTab] = useState('messages');
-  const user = JSON.parse(localStorage.getItem('user'));
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // Fetch user data from localStorage on component mount
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    if (storedUser) {
+      setUser(storedUser);
+    } else {
+      console.error("User data not found in localStorage.");
+    }
+  }, []);
 
   const renderTabContent = () => {
+    if (!user || !user._id) {
+      return <p>Loading user data...</p>; // Display loading message if user data isn't available
+    }
+
     switch (activeTab) {
       case 'messages':
         return <Messages userId={user._id} />;

@@ -8,11 +8,18 @@ function Proposals({ userId, role }) {
   const [error, setError] = useState('');
 
   useEffect(() => {
+    // Check if userId and role are defined before making the API call
+    if (!userId || !role) {
+      console.error('User ID or role is undefined');
+      setError('User information is missing. Please log in again.');
+      return; // Exit the function early if userId or role is missing
+    }
+
     const fetchProposals = async () => {
       try {
         let response;
         if (role === 'freelancer') {
-          // Fetch submitted proposals by freelancer
+          // Fetch submitted proposals for freelancers
           response = await api.get(`/proposals/freelancer/${userId}`, {
             headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
           });

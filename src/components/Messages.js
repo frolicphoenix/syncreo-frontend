@@ -8,15 +8,16 @@ function Messages({ userId }) {
   const [error, setError] = useState('');
 
   useEffect(() => {
+    if (!userId) return; // Exit if userId is undefined
+
     const fetchMessages = async () => {
       try {
         const response = await api.get(`/messages/user/${userId}`, {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         });
-        console.log('Fetched messages:', response.data); // Debug: log messages
         setMessages(response.data);
       } catch (err) {
-        console.error('Error fetching messages:', err); // Log the error
+        console.error('Error fetching messages:', err);
         setError('Failed to load messages.');
       }
     };
