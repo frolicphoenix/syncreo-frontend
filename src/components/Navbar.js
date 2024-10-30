@@ -24,7 +24,7 @@ function Navbar() {
             <span className="greeting">Hi, {user.name}</span>
             <Link to="/profile" className="nav-link profile-link">
               <img
-                src={user.profilePicture || '/prof.png'}
+                src={user.profilePicture || '../prof.png'}
                 alt="Profile"
                 className="profile-pic"
               />

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import api from '../services/api';
-import MessageList from '../components/MessageList';
+// import MessageList from '../components/MessageList';
 import './ProjectDetails.css';
 
 function ProjectDetails() {
@@ -75,7 +75,7 @@ function ProjectDetails() {
           <p className="project-info">Posted by: {project.client.name}</p>
 
           {/* Messaging Component */}
-          <MessageList projectId={id} />
+          {/* <MessageList projectId={id} /> */}
 
           {/* Freelancer View: Proposal Submission Form */}
           {isFreelancer && (
