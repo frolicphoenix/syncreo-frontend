@@ -22,13 +22,9 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin/register" element={<AdminRegister />} />
-
           {user?.role === 'admin' ? (
             <>
               <Route path="/admin" element={<AdminDashboard />} />
-              <Route path="/admin/users" element={<AdminUsers />} />
-              <Route path="/admin/projects" element={<AdminProjects />} />
             </>
           ) : (
             <Route path="/admin/*" element={<Navigate to="/" />} /> // Redirect non-admin users
