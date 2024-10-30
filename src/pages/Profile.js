@@ -50,7 +50,7 @@ function Profile() {
         <ul>
           <li onClick={() => setActiveTab('messages')} className={activeTab === 'messages' ? 'active' : ''}>Messages</li>
           <li onClick={() => setActiveTab('proposals')} className={activeTab === 'proposals' ? 'active' : ''}>Proposals</li>
-          <li onClick={() => setActiveTab('timeline')} className={activeTab === 'timeline' ? 'active' : ''}>Timeline</li>
+          {/* <li onClick={() => setActiveTab('timeline')} className={activeTab === 'timeline' ? 'active' : ''}>Timeline</li> */}
           <li onClick={() => setActiveTab('payments')} className={activeTab === 'payments' ? 'active' : ''}>Payments</li>
           <li onClick={() => setActiveTab('profileEdit')} className={activeTab === 'profileEdit' ? 'active' : ''}>Profile Edit</li>
         </ul>

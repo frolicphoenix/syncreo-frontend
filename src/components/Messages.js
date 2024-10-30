@@ -1,6 +1,6 @@
 // src/components/Messages.js
 import React, { useEffect, useState } from 'react';
-import api from '../services/api';
+import { fetchMessageThread } from '../services/api'; // Importing API function
 import './Messages.css';
 
 function Messages({ userId }) {
@@ -8,13 +8,15 @@ function Messages({ userId }) {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    if (!userId) return; // Exit if userId is undefined
+    if (!userId) {
+      console.error("User ID is missing");
+      setError('User ID is missing. Please log in again.');
+      return;
+    }
 
-    const fetchMessages = async () => {
+    const getMessageThread = async () => {
       try {
-        const response = await api.get(`/messages/user/${userId}`, {
-          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-        });
+        const response = await fetchMessageThread(userId); // Call API
         setMessages(response.data);
       } catch (err) {
         console.error('Error fetching messages:', err);
@@ -22,7 +24,7 @@ function Messages({ userId }) {
       }
     };
 
-    fetchMessages();
+    getMessageThread();
   }, [userId]);
 
   if (error) {
@@ -34,11 +36,11 @@ function Messages({ userId }) {
       <h3>Messages</h3>
       <div className="message-list">
         {messages.length > 0 ? (
-          messages.map((msg, index) => (
-            <div key={index} className={`message ${msg.sender === userId ? 'sent' : 'received'}`}>
-              <div className="message-sender">{msg.senderName}</div>
-              <div className="message-text">{msg.text}</div>
-              <div className="message-timestamp">{new Date(msg.timestamp).toLocaleString()}</div>
+          messages.map((msg) => (
+            <div key={msg._id} className={`message ${msg.sender._id === userId ? 'sent' : 'received'}`}>
+              <div className="message-sender">{msg.sender.name}</div>
+              <div className="message-text">{msg.content}</div>
+              <div className="message-timestamp">{new Date(msg.createdAt).toLocaleString()}</div>
             </div>
           ))
         ) : (

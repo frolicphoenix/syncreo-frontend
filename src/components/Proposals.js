@@ -1,6 +1,6 @@
 // src/components/Proposals.js
 import React, { useEffect, useState } from 'react';
-import api from '../services/api';
+import { fetchProposalsForFreelancer, fetchProposalsForClient } from '../services/api';
 import './Proposals.css';
 
 function Proposals({ userId, role }) {
@@ -8,26 +8,19 @@ function Proposals({ userId, role }) {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    // Check if userId and role are defined before making the API call
     if (!userId || !role) {
-      console.error('User ID or role is undefined');
-      setError('User information is missing. Please log in again.');
-      return; // Exit the function early if userId or role is missing
+      console.error("User ID or role is missing");
+      setError('User data is incomplete. Please log in again.');
+      return;
     }
 
-    const fetchProposals = async () => {
+    const getProposals = async () => {
       try {
         let response;
         if (role === 'freelancer') {
-          // Fetch submitted proposals for freelancers
-          response = await api.get(`/proposals/freelancer/${userId}`, {
-            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-          });
+          response = await fetchProposalsForFreelancer(userId);
         } else if (role === 'client') {
-          // Fetch received proposals for client's projects
-          response = await api.get(`/proposals/client/${userId}`, {
-            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-          });
+          response = await fetchProposalsForClient(userId);
         }
         setProposals(response.data);
       } catch (err) {
@@ -36,7 +29,7 @@ function Proposals({ userId, role }) {
       }
     };
 
-    fetchProposals();
+    getProposals();
   }, [userId, role]);
 
   if (error) {
@@ -54,7 +47,7 @@ function Proposals({ userId, role }) {
               <p><strong>Budget:</strong> ${proposal.budget}</p>
               <p><strong>Cover Letter:</strong> {proposal.coverLetter}</p>
               <p><strong>Status:</strong> {proposal.status}</p>
-              <p><strong>Submitted on:</strong> {new Date(proposal.date).toLocaleString()}</p>
+              <p><strong>Submitted on:</strong> {new Date(proposal.createdAt).toLocaleString()}</p>
             </li>
           ))}
         </ul>
