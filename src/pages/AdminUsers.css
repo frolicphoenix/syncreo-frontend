@@ -1,87 +1,33 @@
 /* src/pages/AdminUsers.css */
 .admin-users {
-    padding: 20px;
-    background-color: var(--background-light);
+    padding: 10px;
   }
   
-  .admin-users h2 {
-    color: var(--primary-dark);
-    font-size: 2em;
-    margin-bottom: 20px;
-  }
-  
-  .user-list {
-    margin-bottom: 30px;
+  .admin-users ul {
+    list-style: none;
+    padding: 0;
   }
   
   .user-item {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 15px;
+    padding: 10px;
     margin-bottom: 10px;
     background-color: #f1f1f1;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-  }
-  
-  .user-item p {
-    color: var(--primary-dark);
-    margin: 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
   }
   
   .user-item button {
-    margin-left: 10px;
-    padding: 5px 10px;
-    background-color: var(--accent-gold);
-    color: var(--text-light);
+    background-color: #ff6b6b;
+    color: #fff;
     border: none;
     border-radius: 5px;
-    font-weight: bold;
+    padding: 5px 10px;
     cursor: pointer;
-    transition: background-color 0.3s;
   }
   
   .user-item button:hover {
-    background-color: var(--teal-green);
-  }
-  
-  .create-user {
-    padding: 20px;
-    background-color: var(--primary-dark);
-    color: #fff;
-    border-radius: 8px;
-  }
-  
-  .create-user h3 {
-    color: var(--accent-gold);
-    margin-bottom: 15px;
-  }
-  
-  .create-user input,
-  .create-user select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: none;
-    background-color: #e6e6e6;
-  }
-  
-  .create-user button {
-    width: 100%;
-    padding: 10px;
-    background-color: var(--accent-gold);
-    color: var(--primary-dark);
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .create-user button:hover {
-    background-color: var(--teal-green);
-    color: #fff;
+    background-color: #ff4c4c;
   }
   

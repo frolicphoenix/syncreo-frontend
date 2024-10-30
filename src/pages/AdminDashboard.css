@@ -1,37 +1,33 @@
 /* src/pages/AdminDashboard.css */
 .admin-dashboard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px;
-    background-color: var(--background-light);
-    min-height: 100vh;
+    padding: 20px;
+    background-color: #f9f9f9;
   }
   
-  .admin-dashboard h1 {
-    color: var(--primary-dark);
-    font-size: 2.5em;
+  .tabs {
+    display: flex;
+    gap: 15px;
     margin-bottom: 20px;
   }
   
-  .admin-nav {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .admin-nav a {
+  .tabs button {
     padding: 10px 20px;
-    color: var(--text-light);
-    background-color: var(--accent-gold);
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
     border-radius: 5px;
     font-weight: bold;
-    text-decoration: none;
-    transition: background-color 0.3s, transform 0.3s;
   }
   
-  .admin-nav a:hover {
-    background-color: var(--teal-green);
-    color: #fff;
-    transform: scale(1.05);
+  .tabs button.active {
+    background-color: #F3C623;
+  }
+  
+  .content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   

@@ -1,86 +1,33 @@
 /* src/pages/AdminProjects.css */
 .admin-projects {
-    padding: 20px;
-    background-color: var(--background-light);
+    padding: 10px;
   }
   
-  .admin-projects h2 {
-    color: var(--primary-dark);
-    font-size: 2em;
-    margin-bottom: 20px;
-  }
-  
-  .project-list {
-    margin-bottom: 30px;
+  .admin-projects ul {
+    list-style: none;
+    padding: 0;
   }
   
   .project-item {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 15px;
+    padding: 10px;
     margin-bottom: 10px;
     background-color: #f1f1f1;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-  }
-  
-  .project-item p {
-    color: var(--primary-dark);
-    margin: 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
   }
   
   .project-item button {
-    margin-left: 10px;
-    padding: 5px 10px;
-    background-color: var(--accent-gold);
-    color: var(--text-light);
+    background-color: #ff6b6b;
+    color: #fff;
     border: none;
     border-radius: 5px;
-    font-weight: bold;
+    padding: 5px 10px;
     cursor: pointer;
-    transition: background-color 0.3s;
   }
   
   .project-item button:hover {
-    background-color: var(--teal-green);
-  }
-  
-  .create-project {
-    padding: 20px;
-    background-color: var(--primary-dark);
-    color: #fff;
-    border-radius: 8px;
-  }
-  
-  .create-project h3 {
-    color: var(--accent-gold);
-    margin-bottom: 15px;
-  }
-  
-  .create-project input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: none;
-    background-color: #e6e6e6;
-  }
-  
-  .create-project button {
-    width: 100%;
-    padding: 10px;
-    background-color: var(--accent-gold);
-    color: var(--primary-dark);
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .create-project button:hover {
-    background-color: var(--teal-green);
-    color: #fff;
+    background-color: #ff4c4c;
   }
   
