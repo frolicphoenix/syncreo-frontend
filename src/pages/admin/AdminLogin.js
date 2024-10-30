@@ -14,18 +14,21 @@ function AdminLogin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    console.log("Admin login button clicked"); // Debugging
 
     try {
       const response = await api.post('/admin/auth/login', formData);
+      console.log("Admin login response:", response.data); // Debugging
       const { token, user } = response.data;
 
       if (user.role === 'admin') {
-        localStorage.setItem('adminToken', token); // Store token specifically for admin
+        localStorage.setItem('adminToken', token); // Store admin token
         window.location.href = '/admin/dashboard';
       } else {
         setError('Access denied.');
       }
     } catch (err) {
+      console.error("Admin login error:", err); // Debugging
       setError('Admin login failed. Please check your credentials.');
     }
   };
