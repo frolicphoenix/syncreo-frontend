@@ -39,10 +39,12 @@
     gap: 20px;
   }
   
+.login-container .form-group label {
+  color: var(--accent-gold);
+}
   .form-group label {
     display: block;
     text-align: left;
-    color: var(--accent-gold);
     font-weight: bold;
     margin-bottom: 5px;
   }

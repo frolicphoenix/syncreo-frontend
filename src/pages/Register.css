@@ -39,10 +39,16 @@
     gap: 20px;
   }
   
+  label {
+    color: #e6e6e6;
+}
+.register-container .form-group label {
+  color: var(--accent-gold);
+}
+
   .form-group label {
     display: block;
     text-align: left;
-    color: var(--accent-gold);
     font-weight: bold;
     margin-bottom: 5px;
   }
@@ -93,5 +99,10 @@
     color: var(--teal-green);
     font-size: 0.9em;
     margin-top: 10px;
+  }
+
+  .loginques {
+    color: #F3C623;
+    text-decoration: none;
   }
   

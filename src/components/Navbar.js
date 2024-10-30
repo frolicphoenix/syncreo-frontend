@@ -15,7 +15,7 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <h1 className="logo">Syncreo</h1>
+      <Link to="/" className="logo">SYNCREO</Link>
       <div className="nav-links">
         
         {user ? (

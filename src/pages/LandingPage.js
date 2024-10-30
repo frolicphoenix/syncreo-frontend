@@ -9,7 +9,7 @@ function LandingPage() {
     <div className="landing-page">
       {/* Navbar */}
       <nav className="navbar">
-        <div className="logo">Syncreo</div>
+        <Link to="/" className="logo">SYNCREO</Link>
         <div className="nav-links">
           <ScrollLink to="features" smooth={true} duration={500}>
             Features

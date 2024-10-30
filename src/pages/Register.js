@@ -1,4 +1,5 @@
-// src/pages/Register.js
+import { Link } from 'react-router-dom';
+
 import React, { useState } from 'react';
 import api from '../services/api';
 import './Register.css';
@@ -79,6 +80,9 @@ function Register() {
           {error && <p className="error-message">{error}</p>}
           {success && <p className="success-message">{success}</p>}
         </form>
+        <p className="login-link">
+          Already have an account? <Link to="/login" className="loginques">Log In</Link>
+        </p>
       </div>
     </div>
   );

@@ -41,11 +41,13 @@ body {
   font-size: 1.8em;
   font-weight: bold;
   color: var(--accent-gold);
+  text-decoration: none;
 }
 
 .nav-links {
   display: flex;
   gap: 20px;
+  cursor: pointer;
 }
 
 .nav-links a {
@@ -68,7 +70,7 @@ body {
 
 /* Hero Section */
 .hero {
-  background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuq3joaHJkCS8gftpCUUR3Yg63O6kFWSO7fg&s') center/cover no-repeat, var(--primary-dark);
+  background: url('../images/Best-apps-for-freelancers-cover.jpg') center/cover no-repeat, var(--primary-dark);
   color: var(--text-light);
   text-align: center;
   padding: 180px 20px;
