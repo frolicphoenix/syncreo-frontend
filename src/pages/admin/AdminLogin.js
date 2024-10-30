@@ -23,9 +23,15 @@ function AdminLogin() {
       const { token, user } = response.data;
 
       if (user?.role === 'admin') {
+        // Save token to localStorage
         localStorage.setItem('adminToken', token);
-        console.log("Admin login successful, redirecting...");
-        window.location.href = '/admin/dashboard';
+        console.log("Admin token set in localStorage:", localStorage.getItem('adminToken'));
+
+        // Redirect after confirming token is set
+        if (localStorage.getItem('adminToken')) {
+          console.log("Redirecting to admin dashboard...");
+          window.location.href = '/admin/dashboard';
+        }
       } else {
         console.log("Access denied for non-admin");
         setError('Access denied.');
