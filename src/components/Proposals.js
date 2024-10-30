@@ -11,22 +11,22 @@ function Proposals({ userId, role }) {
     const fetchProposals = async () => {
       try {
         if (role === 'client') {
-          // Fetch received proposals for client
           const response = await fetchClientProposals();
           setProposals(response.data);
         } else if (role === 'freelancer') {
-          // Fetch sent proposals for freelancer
           const response = await fetchFreelancerProposals();
           setProposals(response.data);
         }
+        console.log('Proposals fetched:', response); // Log response
       } catch (err) {
-        console.error('Error fetching proposals:', err);
+        console.error('Error fetching proposals:', err); // Log detailed error
         setError('Failed to fetch proposals. Please try again later.');
       }
     };
-
+  
     fetchProposals();
   }, [role]);
+  
 
   return (
     <div className="proposals-page">
