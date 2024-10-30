@@ -4,24 +4,37 @@ import api from '../services/api';
 import './ClientProfile.css';
 
 function ClientProfile() {
+  const [user, setUser] = useState(null);
   const [postedProjects, setPostedProjects] = useState([]);
   const [receivedProposals, setReceivedProposals] = useState([]);
   const [error, setError] = useState('');
 
   useEffect(() => {
+    // Retrieve user from localStorage and set it to state
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    if (storedUser) {
+      setUser(storedUser);
+      console.log('Retrieved user:', storedUser); // Log user data
+    } else {
+      console.error("User data not found in localStorage.");
+    }
+  }, []);
+
+  useEffect(() => {
     const fetchClientData = async () => {
       try {
-        // Fetch projects posted by the client
-        const projectsResponse = await api.get('/projects/client', {
-          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-        });
-        setPostedProjects(projectsResponse.data);
+        // Fetch projects and proposals only if user data is available
+        if (user && user._id) {
+          const projectsResponse = await api.get('/projects/client', {
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+          });
+          setPostedProjects(projectsResponse.data);
 
-        // Fetch received proposals for the client's projects
-        const proposalsResponse = await api.get('/proposals/client/received', {
-          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-        });
-        setReceivedProposals(proposalsResponse.data);
+          const proposalsResponse = await api.get('/proposals/client/received', {
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+          });
+          setReceivedProposals(proposalsResponse.data);
+        }
       } catch (err) {
         setError('Failed to load client profile data.');
         console.error('Error fetching client data:', err);
@@ -29,7 +42,11 @@ function ClientProfile() {
     };
 
     fetchClientData();
-  }, []);
+  }, [user]);
+
+  if (!user) {
+    return <p>Loading user data...</p>;
+  }
 
   return (
     <div className="client-profile-page">
