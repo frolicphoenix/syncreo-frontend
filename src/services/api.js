@@ -10,5 +10,9 @@ export const fetchFreelancers = () => api.get('/freelancers');
 export const fetchClientProposals = () => api.get('/proposals/client', {
   headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
 });
+export const fetchFreelancerProposals = () => api.get('/proposals/freelancer', {
+  headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+});
+
 
 export default api;
