@@ -1,5 +1,5 @@
 // src/pages/Profile.js
-import React, { useState } from 'react';
+import React, { useState } from 'react'; // Import useState from React
 import Messages from '../components/Messages';
 import Proposals from '../components/Proposals';
 import Timeline from '../components/Timeline';

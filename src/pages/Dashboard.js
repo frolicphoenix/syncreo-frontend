@@ -43,7 +43,7 @@ function Dashboard() {
       item.title.toLowerCase().includes(lowerCaseQuery) ||
       item.description.toLowerCase().includes(lowerCaseQuery)
     );
-    setFilteredData(filteredResults);
+    setFilteredData(filteredResults); // Update filteredData based on search results
   };
 
   return (

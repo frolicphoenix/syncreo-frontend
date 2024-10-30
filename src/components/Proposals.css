@@ -25,4 +25,9 @@
 
 .proposal-item p {
   margin: 5px 0;
+  color: #555;
+}
+
+.proposal-item p strong {
+  color: #333;
 }

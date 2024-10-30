@@ -8,7 +8,7 @@ function SearchBar({ searchType, onSearch }) {
   const handleSearch = (e) => {
     const newQuery = e.target.value;
     setQuery(newQuery);
-    onSearch(newQuery); // Call onSearch with the updated query
+    onSearch(newQuery); // Pass updated query to Dashboard
   };
 
   return (
