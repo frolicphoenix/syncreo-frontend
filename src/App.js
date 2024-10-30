@@ -24,10 +24,10 @@ function App() {
           <Route path="/admin/login" element={<AdminLogin />} />
           {user?.role === 'admin' ? (
             <>
-              <Route path="/admin" element={<AdminDashboard />} />
+              <Route path="/admin/dashboard" element={<AdminDashboard />} />
             </>
           ) : (
-            <Route path="/admin/*" element={<Navigate to="/" />} /> // Redirect non-admin users
+            <Route path="/admin/*" element={<Navigate to="/admin/login" />} /> // Redirect non-admin users
           )}
           <Route path="/" element={<LandingPage />} />
           <Route path="/register" element={<Register />} />
