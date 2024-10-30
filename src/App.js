@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -10,12 +10,29 @@ import Profile from './pages/Profile';
 import LandingPage from './pages/LandingPage';
 import Footer from './components/Footer';
 
+import AdminLogin from './pages/AdminLogin';
+import AdminDashboard from './pages/AdminDashboard';
+import AdminUsers from './pages/AdminUsers';
+import AdminProjects from './pages/AdminProjects';
+
 function App() {
+  const user = JSON.parse(localStorage.getItem('user'));
+
   return (
     <Router>
       <div>
         <Navbar />
         <Routes>
+          <Route path="/admin/login" element={<AdminLogin />} />
+          {user?.role === 'admin' ? (
+            <>
+              <Route path="/admin" element={<AdminDashboard />} />
+              <Route path="/admin/users" element={<AdminUsers />} />
+              <Route path="/admin/projects" element={<AdminProjects />} />
+            </>
+          ) : (
+            <Route path="/admin/*" element={<Navigate to="/" />} /> // Redirect non-admin users
+          )}
           <Route path="/" element={<LandingPage />} />
           <Route path="/register" element={<Register />} />
 
