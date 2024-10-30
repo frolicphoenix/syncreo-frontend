@@ -2,8 +2,10 @@
 
 .dashboard-page {
   padding: 20px;
+  margin-top: 80px; 
   max-width: 1200px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .dashboard-title {
