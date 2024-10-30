@@ -1,62 +1,61 @@
 /* src/pages/admin/AdminDetailView.css */
 .admin-detail-view {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .admin-detail-view h2 {
-    color: #333;
-    font-size: 1.8em;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .admin-detail-view label {
-    font-weight: bold;
-    color: #555;
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .admin-detail-view input,
-  .admin-detail-view textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    font-size: 1em;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #fff;
-  }
-  
-  .admin-detail-view textarea {
-    height: 100px;
-    resize: vertical;
-  }
-  
-  .admin-detail-view button {
-    width: 100%;
-    padding: 12px;
-    font-size: 1.1em;
-    color: #fff;
-    background-color: #4caf50;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .admin-detail-view button:hover {
-    background-color: #45a049;
-  }
-  
-  .error-message {
-    color: #f44336;
-    font-size: 0.9em;
-    margin-top: 10px;
-  }
-  
+  max-width: 600px;
+  margin: 80px auto 40px; /* Added top margin to prevent overlap with navbar */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-detail-view h2 {
+  color: #333;
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.admin-detail-view label {
+  font-weight: bold;
+  color: #555;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.admin-detail-view input,
+.admin-detail-view textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 1em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.admin-detail-view textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.admin-detail-view button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1em;
+  color: #fff;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.admin-detail-view button:hover {
+  background-color: #45a049;
+}
+
+.error-message {
+  color: #f44336;
+  font-size: 0.9em;
+  margin-top: 10px;
+}
