@@ -7,6 +7,7 @@ import './Dashboard.css';
 
 function Dashboard() {
   const [data, setData] = useState([]); // Holds all projects
+  const [filteredData, setFilteredData] = useState([]); // Holds filtered results
   const [error, setError] = useState('');
 
   const user = JSON.parse(localStorage.getItem('user'));
@@ -22,6 +23,7 @@ function Dashboard() {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         });
         setData(response.data);
+        setFilteredData(response.data); // Initialize filtered data to show all projects initially
       } catch (err) {
         console.error("Error fetching data:", err); // Log the error for debugging
         setError('Failed to fetch data. Please log in.');
@@ -35,13 +37,22 @@ function Dashboard() {
     navigate('/new-project');
   };
 
+  const handleSearch = (query) => {
+    const lowerCaseQuery = query.toLowerCase();
+    const filteredResults = data.filter((item) =>
+      item.title.toLowerCase().includes(lowerCaseQuery) ||
+      item.description.toLowerCase().includes(lowerCaseQuery)
+    );
+    setFilteredData(filteredResults);
+  };
+
   return (
     <div className="dashboard-page">
       <h2 className="dashboard-title">Dashboard</h2>
-      {isFreelancer && <SearchBar searchType="projects" />}
+      {isFreelancer && <SearchBar searchType="projects" onSearch={handleSearch} />}
       {isClient && (
         <>
-          <SearchBar searchType="projects" />
+          <SearchBar searchType="projects" onSearch={handleSearch} />
           <button className="create-project-button" onClick={handleCreateProject}>
             Create New Project
           </button>
@@ -51,9 +62,9 @@ function Dashboard() {
       <h2 className="section-title">Available Projects</h2>
       {error && <p className="error-message">{error}</p>}
       
-      {data.length > 0 ? (
+      {filteredData.length > 0 ? (
         <div className="card-grid">
-          {data.map((item) => (
+          {filteredData.map((item) => (
             <div key={item._id} className="card">
               <Link to={`/projects/${item._id}`} className="card-title">{item.title}</Link>
               <p className="card-description">{item.description}</p>
