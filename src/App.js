@@ -10,11 +10,8 @@ import Profile from './pages/Profile';
 import LandingPage from './pages/LandingPage';
 import Footer from './components/Footer';
 
-import AdminRegister from './pages/AdminRegister';
-import AdminLogin from './pages/AdminLogin';
-import AdminDashboard from './pages/AdminDashboard';
-import AdminUsers from './pages/AdminUsers';
-import AdminProjects from './pages/AdminProjects';
+import AdminLogin from './pages/admin/AdminLogin';
+import AdminDashboard from './pages/admin/AdminDashboard';
 
 function App() {
   const user = JSON.parse(localStorage.getItem('user'));
@@ -25,16 +22,11 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin/register" element={<AdminRegister />} />
           
           {user?.role === 'admin' ? (
-            <>
-              <Route path="/admin" element={<AdminDashboard />} />
-              <Route path="/admin/users" element={<AdminUsers />} />
-              <Route path="/admin/projects" element={<AdminProjects />} />
-            </>
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
           ) : (
-            <Route path="/admin/*" element={<Navigate to="/" />} /> // Redirect non-admin users
+            <Route path="/admin/*" element={<Navigate to="/admin/login" />} />
           )}
           <Route path="/" element={<LandingPage />} />
           <Route path="/register" element={<Register />} />

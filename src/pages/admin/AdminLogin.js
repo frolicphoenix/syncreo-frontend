@@ -1,6 +1,6 @@
-// src/pages/AdminLogin.js
+// src/pages/admin/AdminLogin.js
 import React, { useState } from 'react';
-import api from '../services/api';
+import api from '../../services/api';
 import './AdminLogin.css';
 
 function AdminLogin() {
@@ -19,16 +19,14 @@ function AdminLogin() {
       const response = await api.post('/admin/auth/login', formData);
       const { token, user } = response.data;
 
-      localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify(user));
-
       if (user.role === 'admin') {
-        window.location.href = '/admin'; // Redirect to admin dashboard
+        localStorage.setItem('adminToken', token); // Store token specifically for admin
+        window.location.href = '/admin/dashboard';
       } else {
         setError('Access denied.');
       }
     } catch (err) {
-      setError('Login failed. Please check your credentials.');
+      setError('Admin login failed. Please check your credentials.');
     }
   };
 
