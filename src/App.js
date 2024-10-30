@@ -14,7 +14,8 @@ import AdminLogin from './pages/admin/AdminLogin';
 import AdminDashboard from './pages/admin/AdminDashboard';
 
 function App() {
-  const user = JSON.parse(localStorage.getItem('user'));
+  // const user = JSON.parse(localStorage.getItem('user'));
+  const adminToken = localStorage.getItem('adminToken');
 
   return (
     <Router>
@@ -22,13 +23,15 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/admin/login" element={<AdminLogin />} />
-          {user?.role === 'admin' ? (
-            <>
-              <Route path="/admin/dashboard" element={<AdminDashboard />} />
-            </>
-          ) : (
-            <Route path="/admin/*" element={<Navigate to="/admin/login" />} /> // Redirect non-admin users
-          )}
+
+          {/* Protected admin route - redirects to /admin/login if no token */}
+          <Route
+            path="/admin/dashboard"
+            element={adminToken ? <AdminDashboard /> : <Navigate to="/admin/login" />}
+          />
+
+          {/* Other public routes or redirect for unknown paths */}
+          <Route path="*" element={<Navigate to="/admin/login" />} />
           <Route path="/" element={<LandingPage />} />
           <Route path="/register" element={<Register />} />
 
